@@ -51,7 +51,7 @@ def syn_logic(w, packet):
     if syn_packets[packet_ip] > SYN_PACKET_COUNT:
         print(f"Too many syn requests from: {packet_ip} dropping packets")
         # This is here to prevent the pcap file getting too big
-        if syn_packets[packet_ip]-ICMP_PACKET_COUNT < 10:
+        if syn_packets[packet_ip] - SYN_PACKET_COUNT < 10:
             log_file.write(packet)
     else:
         w.send(packet)
